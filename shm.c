@@ -95,7 +95,10 @@ int shm_close(int id) {
 			{
 				shm_table.shm_pages[i].id = 0;
 				shm_table.shm_pages[i].refcnt = 0;
+				//free memory
+				kfree(shm_table.shm_pages[i].frame);
 				shm_table.shm_pages[i].frame = 0;
+				//
 			}	
 		}
 	}
